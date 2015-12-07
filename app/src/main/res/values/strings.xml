@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">VoCab</string>
+    <string name="Verbalize">Vocalize</string>
+    <string name="Visualize">Visualize</string>
+    <string name="Verify">Verify</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_activity_music_player">MusicPlayerActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="visualize">Visualize</string>
+    <string name="vocalize">Vocalize</string>
+    <string name="verify">Verify</string>
+
+
+</resources>
