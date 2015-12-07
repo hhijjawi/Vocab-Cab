@@ -1,5 +1,6 @@
 package com.vocab.vocab;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -82,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             });
+        }
+        try {
+            if(loadWListSingleton()!=null){
+                Log.d("here1","here");
+                WordListSingleton.setOurInstance(loadWListSingleton());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 //        testTTS();
 
@@ -186,8 +197,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void saveObject(Serializable ser) throws IOException {
-        FileOutputStream fos = this.openFileOutput("WordListSingleton", Context.MODE_PRIVATE);
+    public static void saveObject(Serializable ser,Activity mCallingActivity) throws IOException {
+        FileOutputStream fos = mCallingActivity.openFileOutput("WordListSingleton", Context.MODE_PRIVATE);
         ObjectOutputStream os = new ObjectOutputStream(fos);
         os.writeObject(ser);
         os.close();
@@ -202,14 +213,14 @@ public class MainActivity extends AppCompatActivity {
         fis.close();
         return wordListSingleton;
     }
-/*
     @Override
     public void onPause(){
         super.onPause();
         try {
-            saveObject(WordListSingleton.getInstance().getWordList());
+            saveObject(WordListSingleton.getInstance(), this);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
+
 }

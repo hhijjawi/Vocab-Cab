@@ -22,6 +22,9 @@ public class WordListSingleton implements Serializable{
         this.wordList = new ArrayList<Word>();
     }
 
+    public static void setOurInstance(WordListSingleton ourInstance) {
+        WordListSingleton.ourInstance = ourInstance;
+    }
 
     public void setWordList(ArrayList<Word> wordList) {
         this.wordList = wordList;

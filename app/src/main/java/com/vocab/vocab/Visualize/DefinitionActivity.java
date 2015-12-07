@@ -17,9 +17,12 @@ import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
 import com.vocab.vocab.AsyncTasks.FetchImageAsyncTask;
+import com.vocab.vocab.MainActivity;
 import com.vocab.vocab.ModelData.WordListSingleton;
 import com.vocab.vocab.R;
 import com.vocab.vocab.Utilities.Utils;
+
+import java.io.IOException;
 
 
 /**
@@ -233,7 +236,14 @@ return;
 
     protected void onPause() {
 
-        super.onPause();
+
+            super.onPause();
+            try {
+               MainActivity.saveObject(WordListSingleton.getInstance(),this);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         mSensorManager.unregisterListener(this);
 
@@ -269,6 +279,6 @@ return;
     }}}
 // stack overflow
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy){}
+
 }
